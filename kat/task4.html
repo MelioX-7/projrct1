@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detailed Contact Form</title>
+</head>
+<body>
+
+    <h2>Detailed Contact Form</h2>
+
+    <form action="/submit" method="post">
+        
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br><br>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br><br>
+
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br><br>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1-123-456-7890" required><br><br>
+
+            <label for="password">Create Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+        </fieldset>
+
+        
+        <fieldset>
+            <legend>Address Details</legend>
+
+            <label for="address">Street Address:</label><br>
+            <textarea id="address" name="address" rows="4" cols="40" required></textarea><br><br>
+
+            <label for="country">Country:</label>
+            <select id="country" name="country" required>
+                <option value="">--Select Country--</option>
+                <option value="usa">USA</option>
+                <option value="canada">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="australia">Australia</option>
+                <option value="india">India</option>
+            </select><br><br>
+        </fieldset>
+
+    
+        <fieldset>
+            <legend>Preferences</legend>
+
+            <label>Gender:</label><br>
+            <input type="radio" id="male" name="gender" value="male" required>
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label><br>
+            <input type="radio" id="other" name="gender" value="other">
+            <label for="other">Other</label><br><br>
+
+            <label for="contactMethod">Preferred Contact Method:</label>
+            <select id="contactMethod" name="contactMethod">
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="sms">SMS</option>
+            </select><br><br>
+
+            <label>
+                <input type="checkbox" name="subscribe" value="yes">
+                Subscribe to newsletter
+            </label><br><br>
+        </fieldset>
+
+        
+        <fieldset>
+            <legend>Additional Message</legend>
+
+            <label for="message">Your Message:</label><br>
+            <textarea id="message" name="message" rows="5" cols="50" placeholder="Any questions or comments?"></textarea><br><br>
+        </fieldset>
+
+        
+        <input type="submit" value="Submit Form">
+
+    </form>
+
+</body>
+</html>

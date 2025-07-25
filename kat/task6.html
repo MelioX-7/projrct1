@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <title>Aqua Life Blog</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: radial-gradient(circle, #c8f7f4 0%, #e0f7fa 100%);
+      color: #003c58;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: linear-gradient(to right, #01579b, #0288d1);
+      color: #ffffff;
+      padding: 40px 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    header h1 {
+      font-size: 2.8em;
+      letter-spacing: 2px;
+      margin: 0;
+    }
+    nav {
+      background-color: #006064;
+      display: flex;
+      justify-content: center;
+      padding: 12px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #ffffff;
+      margin: 10px 15px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1.1em;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #ffccbc;
+    }
+    .container {
+      padding: 30px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .post, .quiz, .form-section {
+      background-color: #ffffff;
+      margin-bottom: 30px;
+      padding: 25px;
+      border-left: 8px solid #00bcd4;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    .post h2, .quiz h2, .form-section h2 {
+      color: #ff6f00;
+      margin-bottom: 15px;
+      font-size: 1.6em;
+    }
+    .post p, .quiz p {
+      color: #00796b;
+      line-height: 1.7;
+    }
+    .quiz label {
+      display: block;
+      margin: 10px 0 5px;
+      color: #004d40;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #80deea;
+      border-radius: 6px;
+      font-size: 1em;
+      background-color: #e0f7fa;
+    }
+    input[type="submit"] {
+      background-color: #0288d1;
+      color: #ffffff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    input[type="submit"]:hover {
+      background-color: #01579b;
+    }
+    footer {
+      background-color: #004d40;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9em;
+      margin-top: 50px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🌊 Aqua Life Blog</h1>
+  </header>
+
+  <nav>
+    <a href="#">🏠 Home</a>
+    <a href="#">📚 Articles</a>
+    <a href="#">💡 About</a>
+    <a href="#">✉️ Contact</a>
+  </nav>
+
+  <div class="container">
+    <div class="post">
+      <h2>🐠 Exploring Coral Reefs</h2>
+      <p>Coral reefs are bustling underwater cities filled with life. From clownfish to sea turtles, discover how these ecosystems support biodiversity and protect coastlines.</p>
+    </div>
+
+    <div class="post">
+      <h2>🧼 Tips for Freshwater Aquarium Care</h2>
+      <p>Learn the ideal water parameters, how to avoid algae blooms, and how to choose compatible fish for a peaceful tank community.</p>
+    </div>
+
+    <div class="post">
+      <h2>🌍 Marine Conservation Efforts</h2>
+      <p>Explore initiatives like ocean cleanups, sustainable fishing policies, and coral restoration projects. Find out how you can make a difference.</p>
+    </div>
+
+    <div class="quiz">
+      <h2>🔍 Ocean Awareness Quiz</h2>
+      <p>Test your knowledge about aquatic life!</p>
+      <form>
+        <label>1. What type of water do clownfish live in?</label>
+        <input type="text" name="q1" placeholder="Your answer here"/>
+
+        <label>2. Name one benefit of coral reefs.</label>
+        <input type="text" name="q2" placeholder="Your answer here"/>
+
+        <label>3. Which is a freshwater fish species?</label>
+        <input type="text" name="q3" placeholder="Your answer here"/>
+
+        <input type="submit" value="Submit Answers"/>
+      </form>
+    </div>
+
+    <div class="form-section">
+      <h2>🤝 Contribute Your Voice</h2>
+      <p>Join our conservation community by registering below.</p>
+      <form>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required/>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required/>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone"/>
+
+        <input type="submit" value="Register Now"/>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Aqua Life Blog 🐬 | All rights reserved
+  </footer>
+</body>
+</html>

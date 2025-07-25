@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🍨 Ice Cream Heaven - Colorful Edition</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fef3f7 0%, #ffeef7 100%);
+      color: #4a3f55;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Glowing lightning animation keyframes */
+    @keyframes lightningGlow {
+      0%, 100% { text-shadow: 0 0 5px #ff71b8, 0 0 15px #f94f6d, 0 0 30px #ff71b8; color: #f94f6d; }
+      50% { text-shadow: 0 0 20px #ff2a56, 0 0 40px #ff0051, 0 0 60px #ff2a56; color: #ff2a56; }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 4px 15px rgba(249,79,109,0.5); }
+      50% { box-shadow: 0 6px 25px rgba(255,42,86,0.8); }
+    }
+
+    /* Floating animation for products */
+    @keyframes floatUpDown {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Header with glowing lightning effect */
+    header {
+      background: linear-gradient(90deg, #f94f6d 0%, #ff71b8 100%);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(249,79,109,0.5);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      animation: lightningGlow 3s ease-in-out infinite;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.05em;
+      /* Additional glowing */
+      animation: lightningGlow 3s ease-in-out infinite;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      list-style: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s ease, background-color 0.3s ease;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+    }
+    nav ul li a:hover,
+    nav ul li a.active {
+      background-color: #fff0f6;
+      color: #f94f6d;
+      box-shadow: 0 0 10px #f94f6d;
+      animation: lightningGlow 3s ease-in-out infinite;
+    }
+
+    main {
+      flex-grow: 1;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      width: 100%;
+    }
+
+    section {
+      margin-bottom: 4rem;
+      background: white;
+      padding: 2rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(249,79,109,0.1);
+      transition: box-shadow 0.5s ease;
+    }
+    section h2 {
+      font-size: 2.25rem;
+      margin-bottom: 1rem;
+      color: #f94f6d;
+      text-align: center;
+      text-shadow: 1px 1px 4px #ffadc1;
+      animation: lightningGlow 3s ease-in-out infinite;
+    }
+
+    /* Home Section */
+    #home p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 1rem auto;
+      text-align: center;
+      color: #6a5660;
+      line-height: 1.8;
+      font-weight: 500;
+    }
+    #home p.emoji {
+      font-size: 1.8rem;
+      margin-top: 1rem;
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+
+    /* Product List */
+    .product-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    .product {
+      background: linear-gradient(135deg, #fff0f6 0%, #ffd6e8 100%);
+      border-radius: 20px;
+      box-shadow: 0 10px 15px rgba(249,79,109,0.25);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatUpDown 5s ease-in-out infinite;
+      will-change: transform;
+      cursor: default;
+      position: relative;
+    }
+    .product:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 15px 30px rgba(249,79,109,0.6);
+      z-index: 10;
+    }
+    .product img {
+      width: 100%;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+      filter: drop-shadow(1px 3px 3px rgba(249,79,109,0.25));
+      transition: filter 0.3s ease;
+    }
+    .product:hover img {
+      filter: drop-shadow(0 0 15px #ff2a56);
+    }
+    .product h3 {
+      color: #cc3e69;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-shadow: 1px 1px 3px #ffadc1;
+      transition: color 0.3s ease;
+    }
+    .product:hover h3 {
+      color: #ff2a56;
+      text-shadow: 0 0 10px #ff2a56;
+    }
+    .product p {
+      font-weight: 600;
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+      color: #a33b61;
+    }
+    .product button {
+      background: #ff5e84;
+      border: none;
+      border-radius: 12px;
+      padding: 0.6rem 1.2rem;
+      font-weight: 700;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 5px 12px rgba(255, 94, 132, 0.5);
+      user-select: none;
+    }
+    .product button:hover {
+      background: #ff2a56;
+      box-shadow: 0 7px 18px rgba(255, 42, 86, 0.7);
+      animation: pulseGlow 2s infinite;
+    }
+
+    /* Cart Section */
+    #cart-items {
+      list-style: none;
+      padding: 0;
+      max-width: 800px;
+      margin: 1rem auto;
+    }
+    #cart-items li {
+      background: linear-gradient(135deg, #ffe4f2 0%, #ffb3cc 100%);
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      box-shadow: 0 6px 15px rgba(249,79,109,0.2);
+      gap: 1rem;
+      position: relative;
+      transition: box-shadow 0.3s ease;
+    }
+    #cart-items li:hover {
+      box-shadow: 0 8px 25px rgba(255, 42, 86, 0.5);
+    }
+    #cart-items li img {
+      width: 80px;
+      height: 80px;
+      border-radius: 15px;
+      object-fit: cover;
+      box-shadow: 0 3px 10px rgba(249,79,109,0.3);
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+    }
+    #cart-items li:hover img {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 10px #ff2a56);
+    }
+    #cart-items li .details {
+      flex-grow: 1;
+      color: #6a2c53;
+      user-select: none;
+    }
+    #cart-items li .details h4 {
+      margin-bottom: 0.3rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-shadow: 1px 1px 2px #ff7ea6;
+    }
+    #cart-items li .details p {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #8c5870;
+    }
+    #cart-items li .quantity-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #cart-items li .quantity-controls button {
+      background: #f94f6d;
+      border: none;
+      color: white;
+      font-weight: 700;
+      font-size: 1.25rem;
+      padding: 0 0.6rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(249,79,109,0.5);
+      transition: background 0.3s ease;
+      user-select: none;
+      line-height: 1;
+      width: 28px;
+      height: 28px;
+    }
+    #cart-items li .quantity-controls button:hover {
+      background: #ff2a56;
+      box-shadow: 0 5px 12px rgba(255,42,86,0.7);
+    }
+    #cart-items li .quantity {
+      font-weight: 700;
+      font-size: 1.15rem;
+      width: 30px;
+      text-align: center;
+      user-select: none;
+      color: #4a2c41;
+    }
+
+    #cart-total {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #e84376;
+      text-align: right;
+      max-width: 800px;
+      margin: 1rem auto 0 auto;
+      padding-right: 1rem;
+      text-shadow: 1px 1px 3px #ffadc1;
+      animation: pulseGlow 4s infinite;
+    }
+
+    /* Contact Section */
+    #contact {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #ffe7f0;
+      box-shadow: 0 8px 20px rgba(249,79,109,0.15);
+      border-radius: 25px;
+      padding: 2rem 3rem;
+      color: #6a2c53;
+      animation: floatUpDown 6s ease-in-out infinite;
+    }
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+    #contact strong {
+      color: #d13e6d;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: linear-gradient(90deg, #f94f6d 0%, #ff71b8 100%);
+      color: white;
+      font-weight: 600;
+      box-shadow: 0 -4px 15px rgba(249,79,109,0.5);
+      user-select: none;
+    }
+
+    /* Online Delivery Button */
+    #onlineDeliveryBtn {
+      display: inline-block;
+      margin: 1.5rem auto 0 auto;
+      padding: 0.75rem 1.5rem;
+      background: #ff2a56;
+      color: white;
+      font-weight: 700;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 42, 86, 0.6);
+      transition: background 0.3s ease;
+      user-select: none;
+      display: block;
+      max-width: 250px;
+      text-align: center;
+    }
+    #onlineDeliveryBtn:hover {
+      background: #f94f6d;
+      box-shadow: 0 7px 20px rgba(249,79,109,0.9);
+      animation: pulseGlow 2s infinite;
+    }
+
+    /* Modal for Online Delivery Form */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.65);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 1rem;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background: white;
+      border-radius: 20px;
+      max-width: 450px;
+      width: 100%;
+      padding: 2rem 2.5rem;
+      box-shadow: 0 15px 30px rgba(249,79,109,0.5);
+      position: relative;
+      animation: floatUpDown 4s ease-in-out infinite;
+    }
+    .modal-content h3 {
+      color: #f94f6d;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+      text-shadow: 1px 1px 4px #ff71b8;
+    }
+    .modal-content label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+      color: #cc3e69;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+      border: 2px solid #f94f6d;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      outline-offset: 2px;
+      transition: border-color 0.3s ease;
+    }
+    .modal-content input:focus, .modal-content textarea:focus {
+      border-color: #ff2a56;
+      box-shadow: 0 0 8px #ff2a56;
+    }
+    .modal-content textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .modal-content button.submit-btn {
+      background: #ff2a56;
+      color: white;
+      font-weight: 700;
+      border: none;
+      padding: 0.7rem 1.4rem;
+      width: 100%;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 42, 86, 0.7);
+      transition: background 0.3s ease;
+    }
+    .modal-content button.submit-btn:hover {
+      background: #f94f6d;
+      box-shadow: 0 7px 20px rgba(249,79,109,0.9);
+      animation: pulseGlow 2s infinite;
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #ff2a56;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+    .modal-close:hover {
+      color: #f94f6d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>🍨 Ice Cream Heaven</h1>
+    <nav>
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#cart">Cart</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home">
+      <p>Welcome to <strong>Ice Cream Heaven</strong> — where every scoop is a burst of color and joy! Dive into our vibrant flavors and sweet treats. 🍦🌈</p>
+      <p class="emoji">✨⚡🍧🍓✨</p>
+    </section>
+
+    <section id="products">
+      <h2>Our Ice Creams</h2>
+      <div class="product-list" id="productList">
+        <!-- Products dynamically inserted here -->
+      </div>
+    </section>
+
+    <section id="cart">
+      <h2>Your Cart</h2>
+      <ul id="cart-items">
+        <!-- Cart items dynamically inserted here -->
+      </ul>
+      <p id="cart-total">Total: $0.00</p>
+    </section>
+
+    <section id="contact">
+      <h2>Contact & Delivery</h2>
+      <p><strong>Phone:</strong> +123 456 7890</p>
+      <p><strong>Email:</strong> support@icecreamheaven.com</p>
+      <p><strong>Address:</strong> 123 Sweet Street, Candyland</p>
+      <button id="onlineDeliveryBtn">Order Online Delivery</button>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Ice Cream Heaven - All Rights Reserved
+  </footer>
+
+  <!-- Modal Online Delivery -->
+  <div class="modal-overlay" id="modalOverlay" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <span class="modal-close" id="modalCloseBtn" role="button" tabindex="0" aria-label="Close delivery form">&times;</span>
+      <h3 id="modalTitle">Online Delivery Order</h3>
+      <form id="deliveryForm" novalidate>
+        <label for="name">Full Name*</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name" autocomplete="name" />
+
+        <label for="address">Delivery Address*</label>
+        <textarea id="address" name="address" required placeholder="Your delivery address"></textarea>
+
+        <label for="phone">Phone Number*</label>
+        <input type="tel" id="phone" name="phone" required placeholder="+1 234 567 8901" autocomplete="tel" pattern="^\+?[\d\s-]{7,15}$" />
+
+        <label for="notes">Additional Notes</label>
+        <textarea id="notes" name="notes" placeholder="Any special instructions?"></textarea>
+
+        <button type="submit" class="submit-btn">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Sample product data
+    const products = [
+      {
+        id: 1,
+        name: 'Strawberry Delight',
+        description: 'Fresh strawberry ice cream with real berry chunks.',
+        price: 4.99,
+        image: 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 2,
+        name: 'Minty Fresh',
+        description: 'Cool mint ice cream with chocolate chips.',
+        price: 5.49,
+        image: 'https://images.unsplash.com/photo-1505253210343-f9b9acb98f96?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 3,
+        name: 'Chocolate Bliss',
+        description: 'Rich and creamy chocolate ice cream.',
+        price: 5.99,
+        image: 'https://images.unsplash.com/photo-1551022378-0b3c1d4dbb1c?auto=format&fit=crop&w=400&q=80'
+      },
+      {
+        id: 4,
+        name: 'Rainbow Sorbet',
+        description: 'Colorful, fruity sorbet bursting with flavor.',
+        price: 4.75,
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=400&q=80'
+      }
+    ];
+
+    const productListEl = document.getElementById('productList');
+    const cartItemsEl = document.getElementById('cart-items');
+    const cartTotalEl = document.getElementById('cart-total');
+
+    // Cart stored as an object {productId: quantity}
+    let cart = {};
+
+    // Function to render products
+    function renderProducts() {
+      productListEl.innerHTML = '';
+      products.forEach(product => {
+        const productEl = document.createElement('div');
+        productEl.classList.add('product');
+        productEl.setAttribute('tabindex', '0');
+        productEl.innerHTML = `
+          <img src="${product.image}" alt="${product.name} ice cream" />
+          <h3>${product.name}</h3>
+          <p>$${product.price.toFixed(2)}</p>
+          <button aria-label="Add ${product.name} to cart">Add to Cart</button>
+        `;
+        const btn = productEl.querySelector('button');
+        btn.addEventListener('click', () => addToCart(product.id, btn));
+        productListEl.appendChild(productEl);
+      });
+    }
+
+    // Function to add product to cart
+    function addToCart(productId, btn) {
+      if(cart[productId]) {
+        cart[productId]++;
+      } else {
+        cart[productId] = 1;
+      }
+      renderCart();
+      // Animate button pulse on add
+      btn.style.animation = 'pulseGlow 0.8s ease';
+      btn.addEventListener('animationend', () => btn.style.animation = '');
+    }
+
+    // Function to remove one quantity or remove product from cart
+    function removeFromCart(productId) {
+      if(cart[productId]) {
+        cart[productId]--;
+        if(cart[productId] <= 0) {
+          delete cart[productId];
+        }
+        renderCart();
+      }
+    }
+
+    // Function to render cart
+    function renderCart() {
+      cartItemsEl.innerHTML = '';
+      let total = 0;
+      if(Object.keys(cart).length === 0) {
+        cartItemsEl.innerHTML = '<li>Your cart is empty.</li>';
+        cartTotalEl.textContent = 'Total: $0.00';
+        return;
+      }
+      for(const id in cart) {
+        const product = products.find(p => p.id == id);
+        const quantity = cart[id];
+        const itemTotal = product.price * quantity;
+        total += itemTotal;
+
+        const li = document.createElement('li');
+        li.innerHTML = `
+          <img src="${product.image}" alt="${product.name} thumbnail" />
+          <div class="details">
+            <h4>${product.name}</h4>
+            <p>Price: $${product.price.toFixed(2)}</p>
+          </div>
+          <div class="quantity-controls" aria-label="Adjust quantity for ${product.name}">
+            <button aria-label="Decrease quantity of ${product.name}" class="decrease">-</button>
+            <div class="quantity" aria-live="polite" aria-atomic="true">${quantity}</div>
+            <button aria-label="Increase quantity of ${product.name}" class="increase">+</button>
+          </div>
+        `;
+
+        li.querySelector('.decrease').addEventListener('click', () => removeFromCart(id));
+        li.querySelector('.increase').addEventListener('click', () => addToCart(id, null));
+
+        cartItemsEl.appendChild(li);
+      }
+      cartTotalEl.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    // Online Delivery Modal handling
+    const modalOverlay = document.getElementById('modalOverlay');
+    const onlineDeliveryBtn = document.getElementById('onlineDeliveryBtn');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const deliveryForm = document.getElementById('deliveryForm');
+
+    function openModal() {
+      modalOverlay.classList.add('active');
+      modalOverlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden'; // prevent background scroll
+      deliveryForm.reset();
+      deliveryForm.querySelector('#name').focus();
+    }
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      modalOverlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      onlineDeliveryBtn.focus();
+    }
+
+    onlineDeliveryBtn.addEventListener('click', openModal);
+    modalCloseBtn.addEventListener('click', closeModal);
+
+    // Close modal on overlay click (outside modal content)
+    modalOverlay.addEventListener('click', e => {
+      if(e.target === modalOverlay) closeModal();
+    });
+
+    // Keyboard accessibility for modal close button
+    modalCloseBtn.addEventListener('keydown', e => {
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeModal();
+      }
+    });
+
+    // Form submission handling
+    deliveryForm.addEventListener('submit', e => {
+      e.preventDefault();
+      // Simple validation
+      if(!deliveryForm.checkValidity()) {
+        deliveryForm.reportValidity();
+        return;
+      }
+      // Collect data
+      const data = {
+        name: deliveryForm.name.value.trim(),
+        address: deliveryForm.address.value.trim(),
+        phone: deliveryForm.phone.value.trim(),
+        notes: deliveryForm.notes.value.trim(),
+        cartItems: { ...cart }
+      };
+      if(Object.keys(cart).length === 0) {
+        alert("Your cart is empty! Add some ice cream before ordering.");
+        closeModal();
+        return;
+      }
+      // Normally here you'd send data to a server
+      alert(`Thank you, ${data.name}! Your delivery order has been received.\n\nWe will deliver to:\n${data.address}\nPhone: ${data.phone}\n\nEnjoy your ice cream! 🍨`);
+      cart = {}; // clear cart after ordering
+      renderCart();
+      closeModal();
+    });
+
+    // Initial rendering
+    renderProducts();
+    renderCart();
+  </script>
+</body>
+</html>
